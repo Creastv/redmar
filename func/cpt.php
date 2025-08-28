@@ -72,3 +72,46 @@ function register_cpt_lokale()
     ]);
 }
 add_action('init', 'register_cpt_lokale');
+
+add_action('init', 'go_taxonomy_typ', 0);
+function go_taxonomy_typ()
+{
+    $labels = array(
+        'name' => _x('Typ lokalu', 'go'),
+        'singular_name' => _x('Typ lokalu', 'go'),
+        'search_items' =>  __('Szukaj Typ'),
+        'all_items' => __('Wszystkie Typy'),
+        'menu_name' => __('Typ lokalu'),
+    );
+    register_taxonomy('typ-lokalu', array('lokale'), array(
+        'hierarchical' => true,
+        'labels' => $labels,
+        'show_ui' => true,
+        'show_in_rest' => true,
+        'show_admin_column' => true,
+        'query_var' => true,
+        'rewrite' => array('slug' => 'typ-lokalu'),
+    ));
+}
+
+
+add_action('init', 'go_taxonomy_inwestycja', 0);
+function go_taxonomy_inwestycja()
+{
+    $labels = array(
+        'name' => _x('Inwestycje', 'go'),
+        'singular_name' => _x('Inwestycje', 'go'),
+        'search_items' =>  __('Szukaj Typ'),
+        'all_items' => __('Wszystkie Typy'),
+        'menu_name' => __('Inwestycje'),
+    );
+    register_taxonomy('inwestycje', array('lokale'), array(
+        'hierarchical' => true,
+        'labels' => $labels,
+        'show_ui' => true,
+        'show_in_rest' => true,
+        'show_admin_column' => true,
+        'query_var' => true,
+        'rewrite' => array('slug' => 'inwestycje'),
+    ));
+}
