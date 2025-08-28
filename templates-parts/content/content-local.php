@@ -110,13 +110,16 @@ if ($floor == 0) {
                     <div class="info-value status-<?php echo $statusInfoClass; ?>"><?php echo  $statusInfo; ?></div>
                 </div>
             <?php endif; ?>
-            <?php if (!empty($price)) : ?>
-                <div class="info-row">
-                    <div class="info-label ">Cena</div>
-                    <div class="info-value">
-                        <?php echo $price ?  number_format($price, 2, ',', ' ') . ' zł'  : "-"; ?></div>
+
+            <div class="info-row">
+                <div class="info-label ">Cena</div>
+                <div class="info-value">
+                    <?php echo do_shortcode('[lokal_price id=" ' . get_the_ID() . '" decimals="2"]'); ?> -
+                    <?php echo do_shortcode('[lokal_price_m2 id="' . get_the_ID() . '" decimals="2" currency="zł/m²"]'); ?></br>
+                    <?php echo do_shortcode('[lokal_min_price id="' . get_the_ID() . '" prefix="Najnisza cena z  30 dni: " show_date="0"]'); ?>
                 </div>
-            <?php endif; ?>
+            </div>
+
         </div>
     </div>
 

@@ -116,6 +116,7 @@ while (have_posts()) : the_post(); ?>
                             <li class="details-item item-backyard">
                                 <span>Ogródek i taras</span>
                                 <p><?php echo $terraceBalcony; ?> M<sup>2</sup></p>
+                                <?php echo do_shortcode('[lokal_accessories id="' . get_the_ID() . '" label="Przynależności >" class="" tag="a"]'); ?>
                             </li>
                         <?php endif; ?>
                         <?php if (!empty($status)) : ?>
@@ -134,6 +135,9 @@ while (have_posts()) : the_post(); ?>
                             <li class="details-item item-offer">
                                 <span>Cena</span>
                                 <p><?php echo number_format($price, 2, ',', ' '); ?> zł</p>
+                                <?php echo do_shortcode('[lokal_price_m2 id="' . get_the_ID() . '" decimals="2" currency="zł/m²"]'); ?><br>
+                                <?php echo do_shortcode('[lokal_history id="' . get_the_ID() . '" label="Historia cen  >" class=""]'); ?>
+                                <?php echo do_shortcode('[lokal_min_price id="' . get_the_ID() . '" prefix="Najnisza cena z  30 dni: " show_date="0"]'); ?>
                             </li>
                         <?php endif; ?>
                     </ul>

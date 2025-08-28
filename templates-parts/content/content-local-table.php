@@ -48,8 +48,8 @@ if ($floor == 0) {
             <span><?php echo is_numeric($terraceBalcony) ? number_format((float) $terraceBalcony, 2) . ' m²' : '-'; ?></span>
         <?php else: ?>
             -
-        <?php endif; ?>
-
+        <?php endif; ?></br>
+        <?php echo do_shortcode('[lokal_accessories id="' . get_the_ID() . '" label="Przynależności >" class="" tag="a"]'); ?>
     </td>
     <td><span class="status-<?php echo $statusInfoClass; ?>"><?php echo  $statusInfo; ?></span><br><span
             class="price-mobile"><?php echo $price ?  number_format($price, 2, ',', ' ') . ' zł'  : "-"; ?></span>
@@ -87,7 +87,11 @@ if ($floor == 0) {
     </td>
     <td><a href="<?php the_permalink(); ?>" class="price-btn">Zapytaj</a></td>
     <td class="hide-mobile" data-order="<?php echo $price; ?>">
-        <?php echo $price ?  number_format($price, 2, ',', ' ') . ' zł'  : "-"; ?></td>
+        <?php echo do_shortcode('[lokal_price id=" ' . get_the_ID() . '" decimals="2"]'); ?></br>
+        <?php echo do_shortcode('[lokal_price_m2 id="' . get_the_ID() . '" decimals="2" currency="zł/m²"]'); ?><br>
+        <?php echo do_shortcode('[lokal_history id="' . get_the_ID() . '" label="Historia cen  >" class=""]'); ?>
+        <?php echo do_shortcode('[lokal_min_price id="' . get_the_ID() . '" prefix="Najnisza cena z  30 dni: " show_date="0"]'); ?>
+    </td>
     <td class=" hide-mobile">
         <button class="favorite-btn grid-favorite-toggle" data-index="<?php echo get_the_ID(); ?>">
             <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
