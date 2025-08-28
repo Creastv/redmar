@@ -23,10 +23,10 @@ if (is_home() || is_search() || is_category() || is_tax() ||  is_post_type_archi
                         <a href=" <?php echo esc_url(home_url('/')); ?>">
                             <img class="inactive"
                                 src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-inactive.png"
-                                alt="GoldHouse">
+                                alt="Redmar Developer">
                             <img class="active"
                                 src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-active2.png"
-                                alt="GoldHouse">
+                                alt="Redmar Developer">
                         </a>
                     </div>
                 </div>

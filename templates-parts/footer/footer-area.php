@@ -18,23 +18,23 @@ endif;
                         <div class="footer-top">
                             <div class="footer-logo">
                                 <a href="#"><img
-                                        src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-footer2.png"
+                                        src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-footer.png"
                                         alt="logo"></a>
                             </div><!-- /.footer-logo -->
                             <?php if ($displaySome) : ?>
-                                <div class="social">
-                                    <?php get_template_part('templates-parts/parts/social-media'); ?>
-                                </div><!-- /.social -->
+                            <div class="social">
+                                <?php get_template_part('templates-parts/parts/social-media'); ?>
+                            </div><!-- /.social -->
                             <?php endif; ?>
                         </div><!-- /.footer-top -->
                         <div class="footer-text">
                             <?php if (!empty($desc)) : ?>
-                                <p><?php echo $desc; ?></p>
+                            <p><?php echo $desc; ?></p>
                             <?php endif; ?>
                         </div><!-- /.footer-text -->
                         <?php if ($link) : ?>
-                            <a class="bttn" href="<?php echo esc_url($link_url); ?>"
-                                target="<?php echo esc_attr($link_target); ?>"><?php echo esc_html($link_title); ?></a>
+                        <a class="bttn" href="<?php echo esc_url($link_url); ?>"
+                            target="<?php echo esc_attr($link_target); ?>"><?php echo esc_html($link_title); ?></a>
                         <?php endif; ?>
                     </div><!-- /.footer-left -->
 
@@ -62,7 +62,7 @@ endif;
                             'container'      => false,       // usuwa <div>
                         ));
                         ?>
-                        <p>&copy; 2025 GOLDHOUSE - Wszelkie prawa zastrzeżone. | <a href="https://roial.pl/"
+                        <p>&copy; 2025 Redmar Developer - Wszelkie prawa zastrzeżone. | <a href="https://roial.pl/"
                                 target="_blank"> <svg width="35" height="19" viewBox="0 0 35 19" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <g clip-path="url(#clip0_2002_311)">
