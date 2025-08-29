@@ -140,6 +140,7 @@ while (have_posts()) : the_post(); ?>
                                 <?php echo do_shortcode('[lokal_min_price id="' . get_the_ID() . '" prefix="Najnisza cena z  30 dni: " show_date="0"]'); ?>
                             </li>
                         <?php endif; ?>
+
                     </ul>
                 </div>
                 <div class="projekt-plan">
@@ -188,6 +189,7 @@ while (have_posts()) : the_post(); ?>
                                     d="M13.19,1.13c.58,0,1.14.12,1.67.36,1.63.75,2.69,2.47,2.69,4.38,0,1.74-.64,3.31-1.95,4.78-.92,1.04-2.09,1.93-3.11,2.72-.24.19-.47.36-.7.54-.37.29-.83.66-1.26.91-.45.26-.84.39-1.19.39s-.74-.13-1.19-.39c-.43-.25-.89-.62-1.26-.91-.22-.17-.45-.35-.7-.54-1.02-.79-2.18-1.68-3.11-2.72-1.31-1.48-1.95-3.04-1.95-4.78,0-1.92,1.05-3.64,2.69-4.38.53-.24,1.09-.36,1.67-.36,1.15,0,2.31.49,3.36,1.43.14.13.32.19.5.19s.36-.06.5-.19c1.04-.94,2.2-1.43,3.36-1.43M13.19.38c-1.27,0-2.61.5-3.86,1.62-1.25-1.12-2.59-1.62-3.86-1.62-.69,0-1.36.15-1.98.43C1.65,1.65.38,3.61.38,5.87s.93,3.92,2.14,5.28c1.19,1.34,2.71,2.42,3.9,3.35.43.34.89.7,1.35.97.46.27.99.49,1.57.49s1.11-.22,1.57-.49c.46-.27.92-.63,1.35-.97,1.19-.94,2.71-2.01,3.9-3.35,1.21-1.37,2.14-3.06,2.14-5.28s-1.28-4.22-3.13-5.06c-.62-.28-1.29-.43-1.98-.43h0Z" />
                             </svg>
                         </div>
+
                     </div>
                     <div class=" plan-image-container">
                         <div class="tab-content" id="nav-tabContent">
@@ -231,10 +233,15 @@ while (have_posts()) : the_post(); ?>
                                     </a>
                                 </div>
                             <?php } ?>
+
                         </div>
                         <!-- Navigation End -->
                     </div>
+                    <br>
+                    <!-- <h3>Przynaleności</h3>
+                    <?php echo do_shortcode('[lokal_accessories_list id="' . get_the_ID() . '" class=""]'); ?> -->
                 </div>
+
                 <!-- Project Plan End -->
                 <!-- Project Contact -->
                 <div class="projekt-contact contact-right">
@@ -243,6 +250,7 @@ while (have_posts()) : the_post(); ?>
                     </div>
                     <?php echo do_shortcode('[contact-form-7 id="fe9cdcb" title="Formularz zapytaj o mieszkanie"]'); ?>
                 </div>
+
             </div>
         </section>
         <section class="b-bg b-bg--recomended">
