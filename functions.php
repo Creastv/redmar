@@ -364,3 +364,111 @@ add_action('wp_footer', function () {
     </script>
 <?php
 });
+
+
+
+
+/**
+ * Admin column: ACF 'status' for CPT 'lokale'
+ */
+
+// 1) Register column
+add_filter('manage_lokale_posts_columns', function ($columns) {
+    // optional: place after title
+    $new = [];
+    foreach ($columns as $key => $label) {
+        $new[$key] = $label;
+        if ($key === 'title') {
+            $new['acf_status'] = __('Status', 'your-textdomain');
+        }
+    }
+    // fallback if 'title' not found
+    if (!isset($new['acf_status'])) {
+        $new['acf_status'] = __('Status', 'your-textdomain');
+    }
+    return $new;
+});
+
+// 2) Render column value
+add_action('manage_lokale_posts_custom_column', function ($column, $post_id) {
+    if ($column === 'acf_status') {
+        $value = get_post_meta($post_id, 'status', true);
+
+        $statuses = [
+            '1' => ['label' => 'Dostępne',     'color' => '#2ecc71'], // zielony
+            '2' => ['label' => 'Zarezerwowane', 'color' => '#e67e22'], // pomarańczowy
+            '3' => ['label' => 'Sprzedane',    'color' => '#e74c3c'], // czerwony
+        ];
+
+        if (!empty($value) && isset($statuses[$value])) {
+            $status = $statuses[$value];
+            printf(
+                '<span style="display:inline-block;padding:3px 8px;border-radius:4px;background:%s;color:#fff;font-weight:600;">%s</span>',
+                esc_attr($status['color']),
+                esc_html($status['label'])
+            );
+        } else {
+            echo '—';
+        }
+    }
+}, 10, 2);
+
+
+// 3) Make column sortable
+add_filter('manage_edit-lokale_sortable_columns', function ($columns) {
+    $columns['acf_status'] = 'acf_status';
+    return $columns;
+});
+
+// 4) Sorting logic by meta (status)
+add_action('pre_get_posts', function ($query) {
+    if (!is_admin() || !$query->is_main_query()) return;
+    // pewniejsze niż get_current_screen()
+    if ($query->get('post_type') !== 'lokale') return;
+
+    // sortowanie po naszej kolumnie: meta_value_num (bo 1/2/3)
+    if ($query->get('orderby') === 'acf_status') {
+        $query->set('meta_key', 'status');
+        $query->set('orderby', 'meta_value_num');
+    }
+
+    // filtrowanie: 1/2/3 jako NUMERIC
+    if (isset($_GET['filter_acf_status']) && $_GET['filter_acf_status'] !== '') {
+        $value = sanitize_text_field(wp_unslash($_GET['filter_acf_status']));
+        $meta_query = (array) $query->get('meta_query');
+        $meta_query[] = [
+            'key'     => 'status',
+            'value'   => $value,
+            'compare' => '=',
+            'type'    => 'NUMERIC',
+        ];
+        $query->set('meta_query', $meta_query);
+    }
+});
+
+
+// 5) Add filter dropdown above the table
+add_action('restrict_manage_posts', function ($post_type) {
+    if ($post_type !== 'lokale') return;
+
+    $options = [
+        ''  => __('Wszystkie statusy', 'your-textdomain'),
+        '1' => __('Dostępne', 'your-textdomain'),
+        '2' => __('Zarezerwowane', 'your-textdomain'),
+        '3' => __('Sprzedane', 'your-textdomain'),
+    ];
+
+    $current = isset($_GET['filter_acf_status']) ? sanitize_text_field(wp_unslash($_GET['filter_acf_status'])) : '';
+
+    echo '<label for="filter_acf_status" class="screen-reader-text">' . esc_html__('Filtruj po statusie', 'your-textdomain') . '</label>';
+    echo '<select name="filter_acf_status" id="filter_acf_status">';
+    foreach ($options as $val => $label) {
+        printf(
+            '<option value="%s"%s>%s</option>',
+            esc_attr($val),
+            selected($current, $val, false),
+            esc_html($label)
+        );
+    }
+    echo '</select>';
+});

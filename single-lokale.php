@@ -131,15 +131,17 @@ while (have_posts()) : the_post(); ?>
                                 <p><?php echo $stears; ?></p>
                             </li>
                         <?php endif; ?>
-                        <?php if (!empty($price)) : ?>
-                            <li class="details-item item-offer">
-                                <span>Cena</span>
-                                <p><?php echo number_format($price, 2, ',', ' '); ?> zł</p>
-                                <?php echo do_shortcode('[lokal_price_m2 id="' . get_the_ID() . '" decimals="2" currency="zł/m²"]'); ?><br>
-                                <?php echo do_shortcode('[lokal_history id="' . get_the_ID() . '" label="Historia cen  >" class=""]'); ?>
-                                <?php echo do_shortcode('[lokal_min_price id="' . get_the_ID() . '" prefix="Najnisza cena z  30 dni: " show_date="0"]'); ?>
-                            </li>
-                        <?php endif; ?>
+                        <?php //if (!empty($price)) : 
+                        ?>
+                        <li class="details-item item-offer">
+                            <span>Cena</span>
+                            <p><?php echo number_format($price, 2, ',', ' '); ?> zł</p>
+                            <?php echo do_shortcode('[lokal_price_m2 id="' . get_the_ID() . '" decimals="2" currency="zł/m²"]'); ?><br>
+                            <?php echo do_shortcode('[lokal_history id="' . get_the_ID() . '" label="Historia cen  >" class=""]'); ?>
+                            <?php echo do_shortcode('[lokal_min_price id="' . get_the_ID() . '" prefix="Najnisza cena z  30 dni: " show_date="0"]'); ?>
+                        </li>
+                        <?php //endif; 
+                        ?>
 
                     </ul>
                 </div>
