@@ -146,6 +146,7 @@ while (have_posts()) : the_post(); ?>
                     </ul>
                 </div>
                 <div class="projekt-plan">
+
                     <!-- Navigation -->
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                         <?php if (
@@ -235,7 +236,9 @@ while (have_posts()) : the_post(); ?>
                                     </a>
                                 </div>
                             <?php } ?>
-
+                            <?php if (!$plan2d && !$imgZdjParter && !$plan3d && !$plan2d && !$imgZdjPietro) { ?>
+                                <?php echo '<img src="' . get_template_directory_uri() . '/assets/img/placeholder.png" alt="Redmar Development">'; ?>
+                            <?php } ?>
                         </div>
                         <!-- Navigation End -->
                     </div>
