@@ -35,7 +35,30 @@
   background-position: center;
   position: relative;
 }
-
+.hero-section--project--noimg {
+  background-color: black;
+  max-height: 400px;
+  .hero-content {
+    min-height: initial !important;
+    // padding: 0 !important;
+    padding-bottom: 130px;
+    padding-top: 250px;
+    // padding: 200px 0;
+  }
+}
+@media only screen and (max-width: 556px) {
+  .hero-section--project--noimg {
+    background-color: black;
+    max-height: initial;
+    .hero-content {
+      min-height: initial !important;
+      // padding: 0 !important;
+      padding-bottom: 50px;
+      padding-top: 150px;
+      // padding: 200px 0;
+    }
+  }
+}
 .acf-block-preview {
   .hero-section {
     .slider-item {

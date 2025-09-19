@@ -23,11 +23,16 @@ $investitions = get_field('inwestycje');
     ?>
         <section class="investment-area">
             <div class="investment">
-                <a href="<?php echo $link; ?>" class="investment-img">
-                    <?php echo wp_get_attachment_image($img, 'medium_large'); ?>
-
+                <a href="<?php echo $link; ?>" class="investment-img <?php echo !$img ? 'investment-img--no-grad' : false; ?>">
+                    <?php
+                    if ($img) {
+                        echo wp_get_attachment_image($img, 'medium_large');
+                    } else {
+                        echo '<img src="' . get_template_directory_uri() . '/assets/img/placeholder.png" alt="Redmar Development">';
+                    }
+                    ?>
                     <?php if (!empty($status)) : ?>
-                        <div class="on-sale">
+                        <div class=" on-sale">
                             <span style="background-color: <?php echo $labelColor; ?>;"><?php echo $labelText; ?></span>
                         </div><!-- /.on-sale -->
                     <?php endif; ?>

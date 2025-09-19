@@ -37,6 +37,10 @@
   /* Ensure the gradient is above the image */
 }
 
+.investment-img--no-grad::before {
+  display: none !important;
+}
+
 .investment-img img {
   position: absolute;
   height: 100%;

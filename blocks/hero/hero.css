@@ -27,6 +27,27 @@
   position: relative;
 }
 
+.hero-section--project--noimg {
+  background-color: black;
+  max-height: 400px;
+}
+.hero-section--project--noimg .hero-content {
+  min-height: initial !important;
+  padding-bottom: 130px;
+  padding-top: 250px;
+}
+
+@media only screen and (max-width: 556px) {
+  .hero-section--project--noimg {
+    background-color: black;
+    max-height: initial;
+  }
+  .hero-section--project--noimg .hero-content {
+    min-height: initial !important;
+    padding-bottom: 50px;
+    padding-top: 150px;
+  }
+}
 .acf-block-preview .hero-section .slider-item {
   display: none;
 }

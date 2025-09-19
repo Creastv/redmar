@@ -42,4 +42,12 @@ endif;
 
 
     </section>
+<?php else: ?>
+    <section class="hero-section hero-section--project--noimg">
+        <div class="hero-content">
+            <div class="container">
+                <h1> <?php the_title(); ?></h1>
+            </div>
+        </div>
+    </section>
 <?php endif; ?>
